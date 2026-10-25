@@ -1,0 +1,26 @@
+# Invoice service architecture
+
+`invoice` computes subtotal, tax and total in integer cents, so no floating point ever touches money.
+
+## Components
+
+- **API**: stateless HTTP service, scales horizontally.
+- **Rates**: tax rates loaded at start-up from `rates.json`.
+
+## Rounding
+
+Tax is computed per line and rounded half-to-even, then summed.
+
+<restricted role="seniors" id="rb_01M5S3BQCKVRHZHMYB303V2SMG" v="1" kid="https://sdocs-dev-87bc49.vault.azure.net/keys/mercury-test-org-role-seniors/1b808c62822e4f3cb43aa79d7498d01a" wdek="L9fDizrG9FrikQ3uBMwHx/aVSeFvvf17f354sr11so/yGnNDMspmlmbahCHrK+tej1WpuMNA4b7dgxwEe01UwK2KqXhzE7ehdmYIJ/rehXpk//HxeQLl5R7dGffn7ECW4kph7eo7wkO7d6lSgAzEgmFwMDVAKdgc1fBtp1/5CIfIoHBDP2HwZ2r79LSFI/ZQbpHrmiR6lEcGROkla+YHZbeBueOIhDZdH8nBD3VZLhXEhURxMNsaXUUt9fj+GgZHyICwIa0C+LnUjKRN1YCzpLI6lKBjAw8SH8jrX2/+o9CqYG6Y85LtQS+WY0OuGpSk6VZ796vTr8BrHiPr0OZm1Uq1x2RPgtoxXn6d34np1mE0RmFG4udOLisTaeKamSKYDyG4gp2ZPDdF6cQQ2bTMJc2Sjn3mi3D4/jL/fpb2hwENa/4SLdG2jwUoOls8EEQoedqBu5C6zfP1bpWtT2R+/pZHk2zCCvVJD8ElIGKOKIYgdEk2g2Q1vsRU96JWa4vN" author="KonradMarcinPsiuk" sig="hstGaXEH1ZMDAmQTgzLYbhyzXdx9lgKi84MQ00XiL2BHCQQvkUGy6oU9FudrsHVDBr5GISj1Yn/5UtCh+vR8Wg==">
+sdocs:v1:TS+YhjaA4ScDkNbC3hvaNXN94wlIpceh4P0g+NhYyOdw9obF6pRzVAkDD974azPRCYk2AKaLe/Yb5JlcvVNZahWi1W4jBG2PM1jgOvRq8RHE6VWWi3V5kH86mnbxtSAuuOnok5te57Hxv2tncsC3WOuJphS9KZXF9dzC2ZwfYYxhtI6emxxR3qRss/YGIk/DBKDrWKHQagbCXKJi1zVPN/6BetYJfWzKZg9oWqnA4+jbAa6bhSiHS9+NJl7pGWkcwTw14AstoLiLCx6/i+WXAgIgD546r2ZVJH83y/x3pXuZ8bI0Rc7lB1I1dB1jJDnC2g==
+</restricted>
+
+## Enterprise pricing
+
+<restricted role="admins" id="rb_01M5S3BNTZ6SN50KGDC4A3KH9E" v="1" kid="https://sdocs-dev-87bc49.vault.azure.net/keys/mercury-test-org-role-admins/aa4077a8e4d747279bd9e478cd458a47" wdek="fvMR5D6xXuQomUKKa0Q0vfsVYBQe+ZrBkxt8Q9rsHE44/02qhdhGXF4Vdl3l0f/TDb3NCGvhREdkiela3zC21FccewA77Q+UGDdv3TYj4L4A1+S/bpD1r4goOjQfJhLdgOhVKQmng0g645rKfxLQM73GPAJrGBk2YC0LlsJL0Q7FFcoD+3y/XlkrZg3azZLYfRZekK14t2WDiNiY2uoEwqMMeLcN1tw2YpS9VXydRb0AuK0D+rwAEzjx0lwAJS5dAF6e+vF5YAqQHXP2VxwbsIZe22l6QZiv5JQipBXeXKWLO0DtTBvuT6E8J0yRbkArjI83q0HQ5kcZB69W2nW19w8OUs3LseHMOudlesMalFfFtelek7FAyHs9dewgyM69mecw9wPL7agXrZALZedyHwGqEE2Abg1+AlIxsmUOFaeUgeoC6HkdsKAErrWU1k30K4CPaZR/VaouBO5bJeH7y8/AqAVd5HpxjjGbuwSzl3MxyfDeMRY1QgouMtI12aOd" author="KonradMarcinPsiuk" sig="a27qwNbeICnfnR/0LHkw0DXiqbP2GWhhhO+P4LtjedKg6pbQR3oMJU+yz85k0ftC3u+vnJbP7jXO6tmG3BuBOQ==">
+sdocs:v1:BOWUQPji+m8kkXyX0kjjNMG+rqP1i0iKEzc250JC641ELJ85cqoFx3DsSUDTT/v8rS778Fg3ZrToVG7F1YhtvRjKWvuNYRseURPZZJsgAVET0PTn55x0u+2rf7kADF19m8AmrwWff/FEULLsj3oihZ7OeTR16F1/pE1CZ/5GjBZU9qbmna06n3QFVpIUINpHWMefZNcYVMShWBiNvmCq+1l8xEMbDgjbJQlasxa12CdnPO8CFqJ68Ble0YSN3RJd0yGHK2JNMQ==
+</restricted>
+
+<restricted role="seniors" visibility="hidden" id="rb_01M5S3BJFZG045EK0TZKFHXG13" v="1" kid="https://sdocs-dev-87bc49.vault.azure.net/keys/mercury-test-org-role-seniors/1b808c62822e4f3cb43aa79d7498d01a" wdek="mT/HC9hD3MuNajwPireGAcbBgDJAFIFx3nRXscKbKmbBu/xoEvKWhwjtAfvL4zS794M44HGCB6vPoG63ekxAtWRWB+4Xvl7oPo6JviBm4330H7+ZuP6Y+gg7muOGOwjVXm2eICksgcprjwnlHi5jM3Dh0F0f/YnfCmL4aRTPGymp/Wnn+A5NWskWPreFJNlxPsPbsXXPyAb0NYap4SAfNA1s5lbzct7/ILbq0qhuI/iEH6OhhoSWz+PTHioIM8rH6Tnpq83qdOmxP7vPcoqExuGgTAOZmGAH8J786bzVhKQY4feulvQkxFKKupkezaaESkS34ri9h2SvNAuGXeCmYXQgWfm3/7NxXXo954DxMPmeVFwTLqrF7655QsEFbpg2IM6vexkade6cHVlTlRc+jXYITRbF/t2UifUvo+Uuo92rJurCWuXQLrHT+S9Fd3DcPLqYF17+2S+N9iJsWU285YtFDs3NzVmLOTtvrkcbbzd8qPOU4bWwEn+qZkkdrXru" author="KonradMarcinPsiuk" sig="oXQlGgdx/xiLmOCfLnyG3DXFdtxNzIYd+fVEJ7+jC2kymaPYboK0JAmuVAKMTLmp40Zh2t+O/ehiSJFrV2fqyw==">
+sdocs:v1:OZGEWtyBQyYFE4QcoU01CKEEyZpjKBtipGbGX0Bo0nrd7JPsax2e7Fg6CuDQ0VmSlgM+IssN8RhvtJD6tQet3mWsJCLxqFC+IR2SFLKfE6hdZVDUVefxmyVar89ekjPE+DCHTqj00NCMk/pCJVy02dGmfbPI43N/FbFuy3xX1jTiEkuDJX+XJPCpTtq9+3YQAOxACUHG4mWsqHcOHoFIS24SzreO/MV2mPbv5asti1xU1Kw=
+</restricted>

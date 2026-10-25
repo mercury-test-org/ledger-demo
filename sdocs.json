@@ -1,0 +1,12 @@
+{
+  "portal": "http://localhost:5180",
+  "tenant": "mercury-test-org",
+  "docs": [
+    "docs/**/*.md"
+  ],
+  "roles": [
+    "juniors",
+    "seniors",
+    "admins"
+  ]
+}
