@@ -7,7 +7,7 @@ Sandbox service for the Countersign POC. `invoice` computes invoice totals (subt
 
 ## Try sdocs
 
-This repo doubles as the sandbox for [sdocs](https://github.com/KonradMarcinPsiuk/keddaro): the pages in `docs/` have
+This repo doubles as the sandbox for sdocs (the keddaro project): the pages in `docs/` have
 sections only some teams can read. In git they are encrypted; `sdocs` decrypts the ones your GitHub team allows.
 
 | Doc | juniors | seniors | admins |
