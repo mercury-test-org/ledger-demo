@@ -13,3 +13,5 @@ Admin API key. The tag says `juniors`, but the secret itself is stored as `admin
 The same database password, but this tag raises the bar to `seniors`, so juniors see a lock:
 
 <secret ref="kv:demo-db-password" role="seniors" />
+
+See also the [architecture overview](architecture.md) and the [ledger code](../README.md).
