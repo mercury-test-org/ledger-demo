@@ -1,8 +1,8 @@
 {
-  "portal": "http://localhost:5180",
   "tenant": "millstream",
   "docs": [
-    "docs/**/*.md"
+    "docs/**/*.md",
+    "README.md"
   ],
   "roles": [
     "juniors",
