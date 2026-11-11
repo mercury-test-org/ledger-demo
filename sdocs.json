@@ -1,6 +1,6 @@
 {
   "portal": "http://localhost:5180",
-  "tenant": "mercury-test-org",
+  "tenant": "millstream",
   "docs": [
     "docs/**/*.md"
   ],
