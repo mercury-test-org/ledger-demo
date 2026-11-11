@@ -3,8 +3,8 @@
 Sandbox service for the Countersign POC. `invoice` computes invoice totals (subtotal, tax, total) in integer cents. Merges to `main` run a simulated deploy that creates a GitHub Deployment to `production`.
 
 
-<restricted policy="…"> 
-
+<restricted policy="test-policy" id="rb_01M74WBV8WR3B56WJ6NVHD16M9" v="2" key="1" sig="PeEzwNm1qZsMiyEBKcyRi+9EZhGeExbLcpNslkWVLFv1X2FBSMsvV0VgS4hWeHepcqqDCFsiZFdTeCde/SC+Iw==">
+kadaro:v2:PSAXitAGvzEc612ZVn5oHKkdreeYpPQl9h0ziSSlMbI=
 </restricted>
 
 ## Try sdocs
